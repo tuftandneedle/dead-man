@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dead-man (0.0.1)
+    dead-man (0.0.3)
       activesupport
       redis
 

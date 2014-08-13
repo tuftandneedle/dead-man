@@ -3,7 +3,8 @@ module DeadMan
     extend self
 
     def pulse(job)
-      DeadMan.redis.set(job, Time.now.utc)
+      key = DeadMan.key(job)
+      DeadMan.redis.set(key, Time.now.utc)
     end
   end
 end

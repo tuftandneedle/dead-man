@@ -32,7 +32,8 @@ module DeadMan
     end
 
     def last_heartbeat_at(switch)
-      timestamp = DeadMan.redis.get(switch)
+      key = DeadMan.key(switch)
+      timestamp = DeadMan.redis.get(key)
       Time.parse(timestamp)
     rescue
       return nil
