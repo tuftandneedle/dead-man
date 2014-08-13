@@ -19,6 +19,22 @@ describe DeadMan::Switch do
     end
   end
 
+  describe '.last_heartbeat_at' do
+    context 'with a valid heartbeat timestamp for a switch' do
+      it 'returns a timestamp' do
+        expect(DeadMan.redis).to receive(:get).with('job').and_return(90.minutes.ago.to_s)
+        expect(DeadMan::Switch.last_heartbeat_at('job')).to eq(90.minutes.ago)
+      end
+    end
+
+    context 'with an invalid timestamp for a switch' do
+      it 'returns nil' do
+        expect(DeadMan.redis).to receive(:get).with('bad_job').and_return('bad time')
+        expect(DeadMan::Switch.last_heartbeat_at('bad_job')).to be_nil
+      end
+    end
+  end
+
   describe '.check' do
     context 'with unknown check' do
       it 'should return false' do

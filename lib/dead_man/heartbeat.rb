@@ -3,7 +3,7 @@ module DeadMan
     extend self
 
     def pulse(job)
-      DeadMan::REDIS.set(job, Time.now.utc)
+      DeadMan.redis.set(job, Time.now.utc)
     end
   end
 end

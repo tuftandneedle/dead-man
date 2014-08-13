@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'dead-man'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2014-08-13'
   s.summary     = "The dead man's switch"
   s.description = "Know when your systems are dead."
@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'timecop'
-  s.add_development_dependency 'pry'
   s.add_dependency 'redis'
   s.add_dependency 'activesupport'
 end

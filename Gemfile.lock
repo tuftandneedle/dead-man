@@ -14,16 +14,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    coderay (1.1.0)
     diff-lcs (1.2.5)
     i18n (0.6.11)
     json (1.8.1)
-    method_source (0.8.2)
     minitest (5.4.0)
-    pry (0.10.0)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     redis (3.1.0)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
@@ -37,7 +31,6 @@ GEM
     rspec-mocks (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.3)
-    slop (3.6.0)
     thread_safe (0.3.4)
     timecop (0.7.1)
     tzinfo (1.2.2)
@@ -48,6 +41,5 @@ PLATFORMS
 
 DEPENDENCIES
   dead-man!
-  pry
   rspec
   timecop
