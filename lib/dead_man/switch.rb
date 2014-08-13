@@ -1,6 +1,6 @@
 module DeadMan
   module Switch
-    INTERVAL_THRESHOLD = 0.2
+    INTERVAL_THRESHOLD = 0.2 # 20% padding
     SWITCHES = {}
     CALLBACKS = []
     extend self
@@ -39,10 +39,12 @@ module DeadMan
       return nil
     end
 
-    def alertable?(hearbeat_at, interval)
-      hearbeat_at < adjusted_interval(interval).ago
+    def alertable?(heartbeat_at, interval)
+      heartbeat_at < adjusted_interval(interval).ago
     end
 
+    # Gives an INTERVAL_THRESHOLD padding on interval
+    # e.g. 60.seconds -> 72.seconds
     def adjusted_interval(interval)
       interval + interval * INTERVAL_THRESHOLD
     end
