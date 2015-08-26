@@ -1,13 +1,12 @@
 # DeadMan
-DeadMan is an implementation of a [dead man's Switch](https://en.wikipedia.org/wiki/Dead_man%27s_switch) to monitor jobs. It's a simple tool that gives visibility  when jobs fail to run.
+DeadMan is an implementation of a [dead man's switch](https://en.wikipedia.org/wiki/Dead_man%27s_switch) to monitor jobs. It's a simple tool that gives visibility  when jobs fail to run.
 
 After a job runs, a heartbeat is sent to DeadMan. If a job is registered to run at a certain interval but doesn't get a heartbeat, it's notification callback will be invoked.
 
 ## Install
 Put this line in your Gemfile:
-    gem 'dead-man', require: 'dead_man'
 
-## Install
+    gem 'dead-man', require: 'dead_man'
 
 ## Usage
 There are three parts to setting up the Dead Man:
