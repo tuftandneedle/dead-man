@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = 'dead-man'
-  s.version     = '0.0.5'
-  s.date        = '2014-08-13'
-  s.summary     = "The dead man's switch"
-  s.description = "Know when your systems are dead."
+  s.version     = '0.0.6'
+  s.date        = '2015-08-26'
+  s.summary     = "A dead man's switch for monitoring jobs."
+  s.description = "DeadMan is an implementation of a [dead man's switch](https://en.wikipedia.org/wiki/Dead_man%27s_switch) to monitor jobs. It's a simple tool that gives visibility when jobs fail to run."
   s.authors     = ["Sean Coleman"]
   s.email       = 'sean@seancoleman.net'
   s.files       = ["lib/dead_man.rb", "lib/dead_man/switch.rb", "lib/dead_man/heartbeat.rb"]

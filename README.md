@@ -1,5 +1,5 @@
 # DeadMan
-DeadMan is an implementation of a [dead man's switch](https://en.wikipedia.org/wiki/Dead_man%27s_switch) to monitor jobs. It's a simple tool that gives visibility  when jobs fail to run.
+DeadMan is an implementation of a [dead man's switch](https://en.wikipedia.org/wiki/Dead_man%27s_switch) to monitor jobs. It's a simple tool that gives visibility when jobs fail to run.
 
 After a job runs, a heartbeat is sent to DeadMan. If a job is registered to run at a certain interval but doesn't get a heartbeat, it's notification callback will be invoked.
 
@@ -9,10 +9,11 @@ Put this line in your Gemfile:
     gem 'dead-man', require: 'dead_man'
 
 ## Usage
-There are three parts to setting up DeadMan:
+There are four steps to setup DeadMan:
 - Registering switches
 - Sending heartbeats
 - Registering notification callbacks
+- Connect Redis
 
 ### Registering Switches
 To register a job as a switch in DeadMan, simply supply the  unique name of the job along with the frequency at which the job should run:
@@ -20,14 +21,19 @@ To register a job as a switch in DeadMan, simply supply the  unique name of the 
     DeadMan::Switch.register_switch('UniqueJobName', 2.hours)
 
 ### Sending Heartbeats
-In your application, send a unique heartbeat to DeadMan for a specified job:
+In your application, send a unique heartbeat to DeadMan after a job completes:
 
     DeadMan::Heartbeat.pulse('UniqueJobName')
 
 ### Registering Notification Callbacks
-Now that DeadMan is tracking jobs, the final step is connecting your notification system. Pass a block to register a callback for failure notifications. For example, ping Slack every time a job fails to run.
+Now that DeadMan is tracking jobs, the final step is connecting your notification system. Pass a block to register a callback for failure notifications. For example, ping Slack every time a job fails to run:
 
     DeadMan::Switch.register_callback -> (message) { SLACK.ping("Failed job: #{message}" }
+
+### Connect Redis
+Redis is used to track DeadMan heartbeats. Connect your Redis instance to DeadMan in your application:
+
+    DeadMan.redis = REDIS
 
 ## Questions & Feedback
 Feel free to message me on Github (seanmcoleman) or on twitter (seancoleman86)
