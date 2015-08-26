@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'dead-man'
-  s.version     = '0.0.4'
+  s.version     = '0.0.5'
   s.date        = '2014-08-13'
   s.summary     = "The dead man's switch"
   s.description = "Know when your systems are dead."

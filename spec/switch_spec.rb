@@ -92,7 +92,7 @@ describe DeadMan::Switch do
   describe '.alertable?' do
     context 'with an expired timestamp' do
       it 'should return true' do
-        expect(DeadMan::Switch.alertable?(90.seconds.ago, 30.seconds)).to be_truthy
+        expect(DeadMan::Switch.alertable?(6.minutes.ago, 30.seconds)).to be_truthy
       end
     end
 
@@ -120,8 +120,8 @@ describe DeadMan::Switch do
   end
 
   describe '.adjusted_interval' do
-    it 'should return 20% more than interval' do
-      expect(DeadMan::Switch.adjusted_interval(2.minutes)).to eq(2.4.minutes)
+    it 'should return 5 minutes more than interval' do
+      expect(DeadMan::Switch.adjusted_interval(2.minutes)).to eq(7.minutes)
     end
   end
 end
