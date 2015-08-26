@@ -9,23 +9,23 @@ Put this line in your Gemfile:
     gem 'dead-man', require: 'dead_man'
 
 ## Usage
-There are three parts to setting up the Dead Man:
+There are three parts to setting up DeadMan:
 - Registering switches
 - Sending heartbeats
 - Registering notification callbacks
 
 ### Registering Switches
-To register a job as a DeadMan switch, simply supply the  unique name of the job along with the frequency at which the job should run:
+To register a job as a switch in DeadMan, simply supply the  unique name of the job along with the frequency at which the job should run:
 
-    DeadMan::Switch.register_switch 'UniqueJobName', 2.hours
+    DeadMan::Switch.register_switch('UniqueJobName', 2.hours)
 
 ### Sending Heartbeats
 In your application, send a unique heartbeat to DeadMan for a specified job:
 
     DeadMan::Heartbeat.pulse('UniqueJobName')
 
-### Registering Callbacks
-Now that DeadMan is tracking jobs, the final step is connecting your notification system. Pass a block to register a callback for failure notifications.
+### Registering Notification Callbacks
+Now that DeadMan is tracking jobs, the final step is connecting your notification system. Pass a block to register a callback for failure notifications. For example, ping Slack every time a job fails to run.
 
     DeadMan::Switch.register_callback -> (message) { SLACK.ping("Failed job: #{message}" }
 
